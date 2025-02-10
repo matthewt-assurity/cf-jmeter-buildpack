@@ -16,16 +16,14 @@ if [ -f "${CACHE_DIR}/${JMETER_DIR}" ]
 then
     echo "-----> Using JMeter from cache"
 else
-    echo "-----> Downloading JMeter"
+    echo "-----> Downloading ${JMETER_ARCHIVE}"
     curl -fsSLO "${JMETER_URL}"
-    echo "-----> Untarring JMeter archive"
+    echo "-----> Untarring ${JMETER_ARCHIVE}"
     tar -zxf "${JMETER_ARCHIVE}"
-    echo "-----> Moving JMeter to cache dir"
+    echo "-----> Moving ${JMETER_DIR} to cache dir"
     mv "${JMETER_DIR}" "${CACHE_DIR}/${JMETER_DIR}"
-    echo "-----> List files"
-    ls
 fi
 
 # Copy JMeter from the cache dir to the build dir
-echo "-----> Copy JMeter from the cache to the build dir"
+echo "-----> Copy ${JMETER_DIR} from the cache to the build dir: ${JMETER_BUILD_DIR}"
 cp -r "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"

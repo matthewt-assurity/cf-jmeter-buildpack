@@ -1,14 +1,13 @@
 # This file is for config variables, and is designed to be sourced by the buildpack scripts.
 
 # jmeter setup
-# Latest releases available at https://github.com/aptible/supercronic/releases
+# Latest releases available at https://dlcdn.apache.org/jmeter/binaries/
 JMETER_VERSION="5.6.3"
-JMETER_URL=https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
 JMETER_ARCHIVE=apache-jmeter-${JMETER_VERSION}.tgz
+JMETER_URL=https://dlcdn.apache.org//jmeter/binaries/${JMETER_ARCHIVE}
 JMETER_DIR=apache-jmeter-${JMETER_VERSION}
-JMETER_BUILD_DIR=jmeter
 
-# Dependencies path
-# JMETER_DEPS_DIR="${DEPS_DIR}/${DEPS_IDX}/${JMETER_DIR}"
+# The name of the jmeter dir in the actual build of the app
+JMETER_BUILD_DIR=jmeter
 
 
