@@ -1,13 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env bash
 
-import sys
-import os
-
-BUILD_PATH = sys.argv[1]
-
-jmx_count = [f for f in os.listdir(BUILD_PATH) if "jmx" in f]
-
-print("Detected jmx file(s)")
-if jmx_count == 0: sys.exit(0)
-
-sys.exit(1)
+# detect disabled, must explicitly specify buildpack
+exit 1
