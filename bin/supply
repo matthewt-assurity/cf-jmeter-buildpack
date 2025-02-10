@@ -25,4 +25,5 @@ else
 fi
 
 # Copy JMeter from the cache dir to the build dir
-cp "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}"
+echo "-----> Copy JMeter from the cache to the build dir"
+cp -r "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}"
