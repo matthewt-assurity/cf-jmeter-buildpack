@@ -22,8 +22,20 @@ else
     tar -zxf "${JMETER_ARCHIVE}"
     echo "-----> Moving ${JMETER_DIR} to cache dir"
     mv "${JMETER_DIR}" "${CACHE_DIR}/${JMETER_DIR}"
+
+    # Download Java
+    echo "-----> Downloading Java"
+    curl -fsSLO https://download.bell-sw.com/java/8u442+7/bellsoft-jre8u442+7-linux-amd64-full.tar.gz
+    echo "-----> Untarring Java archive"
+    tar -zxf bellsoft-jre8u442+7-linux-amd64-full.tar.gz
+    echo "-----> Moving ${JMETER_DIR} to cache dir"
+    mv jre8u442-full "${CACHE_DIR}/java"
 fi
 
 # Copy JMeter from the cache dir to the build dir
 echo "-----> Copy ${JMETER_DIR} from the cache to the build dir: ${JMETER_BUILD_DIR}"
 cp -rT "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"
+
+# Copy Java from the cache dir to the build dir
+echo "-----> Copy java from the cache to the build dir: java"
+cp -rT ""${CACHE_DIR}/java" "${BUILD_DIR}/java"
