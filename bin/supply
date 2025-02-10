@@ -38,4 +38,4 @@ cp -rT "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"
 
 # Copy Java from the cache dir to the build dir
 echo "-----> Copy java from the cache to the build dir: java"
-cp -rT ""${CACHE_DIR}/java" "${BUILD_DIR}/java"
+cp -rT "${CACHE_DIR}/java" "${BUILD_DIR}/java"
