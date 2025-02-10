@@ -6,7 +6,7 @@ JMETER_VERSION="5.6.3"
 JMETER_URL=https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
 JMETER_ARCHIVE=apache-jmeter-${JMETER_VERSION}.tgz
 JMETER_DIR=apache-jmeter-${JMETER_VERSION}
-JMETER_FILE=jmeter
+JMETER_BUILD_DIR=jmeter
 
 # Dependencies path
 # JMETER_DEPS_DIR="${DEPS_DIR}/${DEPS_IDX}/${JMETER_DIR}"
