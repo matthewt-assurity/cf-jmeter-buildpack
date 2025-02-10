@@ -9,6 +9,6 @@ JMETER_DIR=apache-jmeter-${JMETER_VERSION}
 JMETER_FILE=jmeter
 
 # Dependencies path
-JMETER_DEPS_DIR="${DEPS_DIR}/${DEPS_IDX}/${JMETER_DIR}"
+# JMETER_DEPS_DIR="${DEPS_DIR}/${DEPS_IDX}/${JMETER_DIR}"
 
 
