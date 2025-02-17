@@ -28,7 +28,7 @@ You will also likely need to set the JAVA_HOME env var to get JMeter working. He
 2. If you use a custom start command, it is your responsibility to set JAVA_HOME.
 3. If you SSH into a CF app, it is your responsibility to set JAVA_HOME.
 
-Points 2 and 3 are the usual ways that we use JMeter to run load tests on CF, therefore most of the time you will need to set JAVA_HOME yourself when using this buildpack.
+Points 2 and 3 are the usual ways that we use JMeter to run load tests on CF, therefore most of the time you will need to set JAVA_HOME yourself when using this buildpack. More details on this Stack Overflow answer [link](https://stackoverflow.com/a/48281677)
 
 The recommended way of setting JAVA_HOME is to add an env var in your manifest e.g here is an example using the path to the `open_jdk_jre` that the Java buildpack installs.
 
