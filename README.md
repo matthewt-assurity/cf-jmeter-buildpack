@@ -4,36 +4,38 @@ Buildpack to install JMeter to a Cloud Foundry app
 
 # What does this buildpack do?
 
-Downloads the version of JMeter and Java specified in `parameters.sh`.
+Downloads the version of JMeter specified in `parameters.sh`.
 
 All JMeter files are available under `/home/vcap/app/jmeter`.
-
-All Java files are available under `/home/vcap/app/java`.
 
 # How to get it working? 
 
 ## Java
 
-JMeter also needs Java installed to run, and this buildpack will do this. This is inspired by: https://github.com/syahrul-aiman/nodejs-java-buildpack
+JMeter also needs Java installed to run. It is recommended to use this buildpack in combination with the Java buildpack e.g in your manifest:
 
-Currently it downloads the Bellsoft Liberca Open JRE https://bell-sw.com/pages/downloads/#jdk-8-lts
+```yaml
+---
+buildpacks:
+    - https://github.com/matthewt-assurity/cf-jmeter-buildpack
+    - java_buildpack
+---
+```
 
-Depending on how a buildpack is used and implemented, it is the responsibility of the user to set the JAVA_HOME and PATH env vars. See this Stack Overflow answer: https://stackoverflow.com/a/48281677
+You will also likely need to set the JAVA_HOME env var to get JMeter working. Here are some of the use cases of JAVA_HOME and running Java on a CF app:
 
-Here are the various ways that you can run Java on a CF app:
-
-1. If you use the official Java buildpack to start a Java app, then JAVA_HOME will be set as expected. 
+1. If you use the official Java buildpack to create the start command for a Java app, then JAVA_HOME will be set as expected by the buildpack.
 2. If you use a custom start command, it is your responsibility to set JAVA_HOME.
 3. If you SSH into a CF app, it is your responsibility to set JAVA_HOME.
 
-Points 2 and 3 are the usual ways that we use JMeter to run load tests on CF, therefore you will need to set JAVA_HOME and update the PATH yourself when using this buildpack.
+Points 2 and 3 are the usual ways that we use JMeter to run load tests on CF, therefore most of the time you will need to set JAVA_HOME yourself when using this buildpack.
 
-The recommended way of setting JAVA_HOME is to add an env var in your manifest e.g
+The recommended way of setting JAVA_HOME is to add an env var in your manifest e.g here is an example using the path to the `open_jdk_jre` that the Java buildpack installs.
 
 ```yaml
 ---
 env:
-    JAVA_HOME: /home/vcap/app/java
+    JAVA_HOME: /home/vcap/app/.java-buildpack/open_jdk_jre
 ---
 ```
 
@@ -42,6 +44,8 @@ env:
 Once you have set JAVA_HOME, you will be able to run JMeter. 
 
 When using a custom start command, the working directory is set to the `/app/` directory, therefore you can execute JMeter by running `./jmeter/bin/jmeter.sh`.
+
+When SSHing, the working directory is set to the `/home/` directory, therefore you can execute JMeter by running `./app/jmeter/bin/jmeter.sh`.
 
 # License
 
